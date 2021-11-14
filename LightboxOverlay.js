@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Animated, Dimensions, Modal, PanResponder, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Dimensions, Modal, PanResponder, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 const WINDOW_WIDTH = Dimensions.get('window').width;
@@ -129,9 +129,7 @@ export default class LightboxOverlay extends Component {
   }
 
   open = () => {
-    if(isIOS) {
-      StatusBar.setHidden(true, 'fade');
-    }
+    
     this.state.pan.setValue(0);
     this.setState({
       isAnimating: true,
@@ -153,9 +151,7 @@ export default class LightboxOverlay extends Component {
 
   close = () => {
     this.props.willClose();
-    if(isIOS) {
-      StatusBar.setHidden(false, 'fade');
-    }
+
     this.setState({
       isAnimating: true,
     });
